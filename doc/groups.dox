@@ -1,0 +1,33 @@
+
+/**
+@brief The main, catch-all namespace for TEO.
+ */
+namespace teo {}
+
+/**
+ * \defgroup lpinel_libraries lpinel Libraries
+ *
+ * @brief lpinel libraries.
+ *
+ */
+
+/**
+ * \defgroup lpinel_programs lpinel Programs
+ *
+ * @brief lpinel programs.
+ */
+
+/**
+ * \defgroup lpinel_applications lpinel Applications (Collections of Programs)
+ *
+ * @brief lpinel applications (collections of programs).
+ */
+
+/**
+ * \defgroup lpinel_examples lpinel Examples
+ *
+ * @brief lpinel examples.
+ */
+
+
+
