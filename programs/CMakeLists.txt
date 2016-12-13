@@ -2,4 +2,5 @@
 # Authors: LoliPinel
 
 add_subdirectory(exampleProgram)
+add_subdirectory(zmpTEOwrist) 
 

@@ -1,0 +1,4 @@
+/home/teo/repos/lpinel/build/libraries/ExampleLibrary/CMakeFiles/ExampleLibrary.dir
+/home/teo/repos/lpinel/build/programs/exampleProgram/CMakeFiles/exampleProgram.dir
+/home/teo/repos/lpinel/build/CMakeFiles/uninstall.dir
+/home/teo/repos/lpinel/build/programs/zmpTEOwrist/CMakeFiles/zmpTEOwrist.dir

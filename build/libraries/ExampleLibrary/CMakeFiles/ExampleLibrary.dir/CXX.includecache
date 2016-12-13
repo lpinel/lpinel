@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/teo/repos/lpinel/libraries/ExampleLibrary/ExampleLibrary.cpp
+ExampleLibrary.hpp
+/home/teo/repos/lpinel/libraries/ExampleLibrary/ExampleLibrary.hpp
+
+/home/teo/repos/lpinel/libraries/ExampleLibrary/ExampleLibrary.hpp
+

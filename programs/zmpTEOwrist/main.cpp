@@ -1,9 +1,6 @@
 #include "global.h"
 #include "ratethread.hpp"
 
-yarp::os::Port port2
-yarp::os::Port port3
-
 int main(void) {
 
 	/** Check yarp network**/
@@ -26,7 +23,7 @@ int main(void) {
     yarp::os::Time::delay(0.5);
     yarp.connect("/jr3ch3:o","/jr3ch3:i");
 
-	MyRateThread jr3Thread(port2, port3);
+    MyRateThread jr3Thread;
 	jr3Thread.start();
 
 	char c;

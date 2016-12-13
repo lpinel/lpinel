@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../../lib/libExampleLibrary.a  CMakeFiles/ExampleLibrary.dir/ExampleLibrary.cpp.o
+/usr/bin/ranlib ../../lib/libExampleLibrary.a
