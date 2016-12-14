@@ -1,4 +1,4 @@
-#include "ratethread.hpp"
+#include "MyRateThread.hpp"
 
 /************************************************************************/
 ratethread::MyRateThread() : yarp::os::RateThread(TS*1000.0){
