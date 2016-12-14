@@ -1,4 +1,3 @@
-#include "global.h"
 #include "ratethread.hpp"
 
 int main(void) {
@@ -35,4 +34,5 @@ int main(void) {
 	port2.close();
 	port3.close();
 
+    return 0;
 }
