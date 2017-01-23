@@ -3,6 +3,8 @@
 *.lo
 *.o
 *.obj
+CMakeLists.txt.user
+/build*/
 
 # Precompiled Headers
 *.gch
