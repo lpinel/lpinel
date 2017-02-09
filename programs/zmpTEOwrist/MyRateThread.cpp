@@ -1,22 +1,17 @@
 #include "MyRateThread.hpp"
 
 /************************************************************************/
-/*ratethread::MyRateThread() : yarp::os::RateThread(TS*1000.0){
-	_d =  0.025;
-}*/
-
-/************************************************************************/
 void MyRateThread::run(){
     ReadFTSensor();
     AxesTransform();
-	ZMPcomp();
+    ZMPcomp();
 }
 
 /************************************************************************/
 void MyRateThread::ReadFTSensor(){
 
-    _port2.read(_sensor2.bottle);
-    _port3.read(_sensor3.bottle);
+    port2.read(_sensor2.bottle);
+    port3.read(_sensor3.bottle);
 
     _sensor2.fx = _sensor2.bottle.get(0).asDouble();
     _sensor2.fy = _sensor2.bottle.get(1).asDouble();
@@ -35,27 +30,21 @@ void MyRateThread::ReadFTSensor(){
 
 /************************************************************************/
 void MyRateThread::AxesTransform(){
-	//Transformation matrix between TEO_body_axes (world)  and Jr3_axes with horizontal tray (waiter)
-	_tray.fx = + _sensor2.fz;
-	_tray.fy = - _sensor2.fy;
-	_tray.fz = + _sensor2.fx;
-	_tray.mx = + _sensor2.mz;
-	_tray.my = - _sensor2.my;
-	_tray.mz = + _sensor2.mx;
+    //Transformation matrix between TEO_body_axes (world)  and Jr3_axes with horizontal tray (waiter)
+    _tray.fx = + _sensor2.fz;
+    _tray.fy = - _sensor2.fy;
+    _tray.fz = + _sensor2.fx;
+    _tray.mx = + _sensor2.mz;
+    _tray.my = - _sensor2.my;
+    _tray.mz = + _sensor2.mx;
 }
 
 /************************************************************************/
 void MyRateThread::ZMPcomp(){
-	/** ZMP Equations **/
-    _tray.xzmp = (- (_tray.my) / _tray.fz) + _d;
+    /** ZMP Equations **/
+
+    _tray.xzmp = (- (_tray.my) / (_tray.fz)) + _d;
     _tray.yzmp = (_tray.mx) / _tray.fz;
 
     cout << "ZMP: [" << _tray.xzmp << ", " << _tray.yzmp << "]" << endl;
-}
-
-/************************************************************************/
-bool MyRateThread::setPorts(yarp::os::Port port2, yarp::os::Port port3)
-{
-    _port2 = port2;
-    _port3 = port3;
 }
