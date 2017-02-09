@@ -1,9 +1,17 @@
 #include "MyRateThread.hpp"
 
+#define PI  3.141592
+#define TS 0.03
+#define L   0.8927 // Pendulum Longitude
+#define M   62.589 // Robot mass
+#define g   9.81 // Gravity in m/s²
+
 int main(void) {
 
 	/** Check yarp network**/
 	yarp::os::Network yarp;
+    yarp::os::Port port2;
+    yarp::os::Port port3;
 
 	printf("Checking network...\n");
     if (!yarp.checkNetwork()) {
@@ -23,6 +31,7 @@ int main(void) {
     yarp.connect("/jr3ch3:o","/jr3ch3:i");
 
     MyRateThread jr3Thread;
+    jr3Thread.setPorts(port2, port3);
 	jr3Thread.start();
 
 	char c;
@@ -31,8 +40,8 @@ int main(void) {
 	} while (c != '\n');
 
 	jr3Thread.stop();
-	port2.close();
-	port3.close();
+    port2.close();
+    port3.close();
 
     return 0;
 }

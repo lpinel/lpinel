@@ -1,22 +1,22 @@
 #include "MyRateThread.hpp"
 
 /************************************************************************/
-ratethread::MyRateThread() : yarp::os::RateThread(TS*1000.0){
+/*ratethread::MyRateThread() : yarp::os::RateThread(TS*1000.0){
 	_d =  0.025;
-}
+}*/
 
 /************************************************************************/
-void ratethread::run(){
-	ReadFTSensor();
-	AxesTransform();
+void MyRateThread::run(){
+    ReadFTSensor();
+    AxesTransform();
 	ZMPcomp();
 }
 
 /************************************************************************/
-void ratethread::ReadFTSensor(){
+void MyRateThread::ReadFTSensor(){
 
-	port2.read(_sensor2.bottle);
-    port3.read(_sensor3.bottle);
+    _port2.read(_sensor2.bottle);
+    _port3.read(_sensor3.bottle);
 
     _sensor2.fx = _sensor2.bottle.get(0).asDouble();
     _sensor2.fy = _sensor2.bottle.get(1).asDouble();
@@ -34,7 +34,7 @@ void ratethread::ReadFTSensor(){
 }
 
 /************************************************************************/
-void ratethread::AxesTransform(){ 
+void MyRateThread::AxesTransform(){
 	//Transformation matrix between TEO_body_axes (world)  and Jr3_axes with horizontal tray (waiter)
 	_tray.fx = + _sensor2.fz;
 	_tray.fy = - _sensor2.fy;
@@ -45,10 +45,17 @@ void ratethread::AxesTransform(){
 }
 
 /************************************************************************/
-void ratethread::ZMPcomp(){
+void MyRateThread::ZMPcomp(){
 	/** ZMP Equations **/
-    _tray.xzmp = (- (_tray.my) / _tray.fz)) + _d;
+    _tray.xzmp = (- (_tray.my) / _tray.fz) + _d;
     _tray.yzmp = (_tray.mx) / _tray.fz;
 
-    cout << "ZMP: [" << _sensor2.xzmp << ", " << _sensor2.yzmp << "]" << endl;
+    cout << "ZMP: [" << _tray.xzmp << ", " << _tray.yzmp << "]" << endl;
+}
+
+/************************************************************************/
+bool MyRateThread::setPorts(yarp::os::Port port2, yarp::os::Port port3)
+{
+    _port2 = port2;
+    _port3 = port3;
 }
