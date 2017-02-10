@@ -1,14 +1,14 @@
 #include "MyRateThread.hpp"
 
 /************************************************************************/
-void MyRateThread::run(){
+void MyRateThread::run(){// proceso principal
     ReadFTSensor();
     AxesTransform();
     ZMPcomp();
 }
 
 /************************************************************************/
-void MyRateThread::ReadFTSensor(){
+void MyRateThread::ReadFTSensor(){ //recogida de informacion de los sensores de las muñecas
 
     port2.read(_sensor2.bottle);
     port3.read(_sensor3.bottle);
@@ -30,7 +30,7 @@ void MyRateThread::ReadFTSensor(){
 
 /************************************************************************/
 void MyRateThread::AxesTransform(){
-    //Transformation matrix between TEO_body_axes (world)  and Jr3_axes with horizontal tray (waiter)
+    //Transformation matrix between TEO_body_axes (world) and Jr3_axes with horizontal tray (waiter)
     _tray.fx = + _sensor2.fz;
     _tray.fy = - _sensor2.fy;
     _tray.fz = + _sensor2.fx;
@@ -40,7 +40,7 @@ void MyRateThread::AxesTransform(){
 }
 
 /************************************************************************/
-void MyRateThread::ZMPcomp(){
+void MyRateThread::ZMPcomp(){ // Cálculo del ZMP de la botella
     /** ZMP Equations **/
 
     _tray.xzmp = -((- (_tray.my) / (_tray.fz)) + _d)*1000.0; // Milimetros
