@@ -43,8 +43,8 @@ void MyRateThread::AxesTransform(){
 void MyRateThread::ZMPcomp(){
     /** ZMP Equations **/
 
-    _tray.xzmp = (- (_tray.my) / (_tray.fz)) + _d;
-    _tray.yzmp = (_tray.mx) / _tray.fz;
+    _tray.xzmp = -((- (_tray.my) / (_tray.fz)) + _d)*1000.0; // Milimetros
+    _tray.yzmp = ((_tray.mx) / _tray.fz)*1000.0; // Milimetros
 
     cout << "ZMP: [" << _tray.xzmp << ", " << _tray.yzmp << "]" << endl;
 }
