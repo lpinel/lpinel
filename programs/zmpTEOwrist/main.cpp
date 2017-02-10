@@ -1,3 +1,19 @@
+/**
+ * @ingroup zmpTEOwrist_programs
+ * \defgroup zmpTEOwrist waiterExecManip
+ *
+ * @brief Creates an instance of teo::zmpTEOwrist.
+ *
+ * @section zmpTEOwrist_legal Legal
+ *
+ * Copyright: 2017 (C) Universidad Carlos III de Madrid
+ *
+ * Author:Juan Miguel Garcia y Loli Pinel 2017
+ *
+ * CopyPolicy: This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License 3.0 or later
+ */
+
 #include "MyRateThread.hpp"
 
 int main(void) {
